@@ -1,0 +1,35 @@
+{
+    "dataset_size": 400,
+    "min_length": 74,
+    "max_length": 512,
+    "mean_length": 414.105,
+    "invalid_samples": [],
+    "invalid_labels": [],
+    "bio_violations": [],
+    "entity_distribution": {
+        "GeneOrGeneProduct": 4207,
+        "DiseaseOrPhenotypicFeature": 3479,
+        "ChemicalEntity": 2729,
+        "OrganismTaxon": 1369,
+        "SequenceVariant": 854,
+        "CellLine": 99
+    },
+    "label_distribution": {
+        "O": 117018,
+        "B-GeneOrGeneProduct": 4207,
+        "I-GeneOrGeneProduct": 12984,
+        "B-DiseaseOrPhenotypicFeature": 3479,
+        "I-DiseaseOrPhenotypicFeature": 9967,
+        "B-ChemicalEntity": 2729,
+        "B-OrganismTaxon": 1369,
+        "B-SequenceVariant": 854,
+        "I-SequenceVariant": 4404,
+        "I-ChemicalEntity": 7855,
+        "B-CellLine": 99,
+        "I-CellLine": 334,
+        "I-OrganismTaxon": 343
+    },
+    "coverage": 0.2935487376390046,
+    "max_length_samples": 101,
+    "max_length_sample_ratio": 0.2525
+}
