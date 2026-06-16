@@ -1,0 +1,67 @@
+{
+    "healthy": true,
+    "health_checks": {
+        "valid_sample_lengths": true,
+        "valid_labels": true,
+        "valid_bio": true,
+        "entity_coverage": true,
+        "entity_balance": true,
+        "truncation": true
+    },
+    "health_signals": {
+        "coverage": 0.2935487376390046,
+        "o_ratio": 0.7064512623609954,
+        "entity_imbalance_ratio": 42.494949494949495,
+        "avg_entity_length": 3.817539451990265,
+        "max_length_sample_ratio": 0.2525
+    },
+    "dataset_size": 400,
+    "length_statistics": {
+        "min_length": 74,
+        "max_length": 512,
+        "mean_length": 414.105,
+        "std_length": 96.17746220185357
+    },
+    "integrity": {
+        "invalid_samples": [],
+        "invalid_labels": [],
+        "bio_violations": [],
+        "special_token_errors": []
+    },
+    "entity_distribution": {
+        "GeneOrGeneProduct": 4207,
+        "DiseaseOrPhenotypicFeature": 3479,
+        "ChemicalEntity": 2729,
+        "OrganismTaxon": 1369,
+        "SequenceVariant": 854,
+        "CellLine": 99
+    },
+    "label_distribution": {
+        "O": 117018,
+        "B-GeneOrGeneProduct": 4207,
+        "I-GeneOrGeneProduct": 12984,
+        "B-DiseaseOrPhenotypicFeature": 3479,
+        "I-DiseaseOrPhenotypicFeature": 9967,
+        "B-ChemicalEntity": 2729,
+        "B-OrganismTaxon": 1369,
+        "B-SequenceVariant": 854,
+        "I-SequenceVariant": 4404,
+        "I-ChemicalEntity": 7855,
+        "B-CellLine": 99,
+        "I-CellLine": 334,
+        "I-OrganismTaxon": 343
+    },
+    "rare_entities": {
+        "CellLine": 99
+    },
+    "truncation_stats": {
+        "samples": 400,
+        "truncated_samples": 99,
+        "truncated_sample_ratio": 0.2475,
+        "average_original_tokens": 434.87,
+        "average_tokens_after_truncation": 414.105,
+        "average_truncated_tokens": 83.8989898989899,
+        "max_truncated_tokens": 469,
+        "total_lost_tokens": 8306
+    }
+}
