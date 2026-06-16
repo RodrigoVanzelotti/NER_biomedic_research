@@ -1,5 +1,6 @@
 import csv
 import os
+import shutil
 import statistics
 import time
 from datetime import datetime
@@ -15,6 +16,11 @@ from experiments.baseline import EXPERIMENT as EXP_BASELINE
 from experiments.experiment_5_epochs import EXPERIMENT as EXP_5_EPOCHS
 from experiments.experiment_lr_3e5 import EXPERIMENT as EXP_LR_3E5
 from experiments.experiment_batch_16 import EXPERIMENT as EXP_BATCH_16
+
+from experiments.experiment_batch_16_fixed import EXPERIMENT as EXP_BATCH_16_FIXED
+from experiments.experiment_8_epochs import EXPERIMENT as EXP_8_EPOCHS
+from experiments.experiment_combined import EXPERIMENT as EXP_COMBINED
+
 from services.config.config_service import ConfigService
 from services.data_loader import load_data
 from services.tokenizer import get_tokenizer
@@ -23,7 +29,7 @@ from training.metrics import build_compute_metrics
 from training.training_args import build_training_args
 
 
-EXPERIMENTS = [EXP_BASELINE, EXP_5_EPOCHS, EXP_LR_3E5, EXP_BATCH_16]
+EXPERIMENTS = [EXP_BATCH_16_FIXED, EXP_8_EPOCHS, EXP_COMBINED]
 SEEDS = [42, 43, 44]
 
 
@@ -71,6 +77,9 @@ def run_one(
 
     val_metrics = trainer.evaluate()
     test_metrics = trainer.predict(test_processed).metrics
+
+    del trainer, model
+    shutil.rmtree(f"./results/{run_id}", ignore_errors=True)
 
     return {
         "experiment": experiment["name"],

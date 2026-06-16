@@ -1,0 +1,21 @@
+rank,count,token,true,pred,category,example_context
+1,11,-,O,I-GeneOrGeneProduct,false_positive,##ele ##ctive beta - block ##er met
+2,11,g,B-GeneOrGeneProduct,B-ChemicalEntity,wrong_type,growth hormone ( g ##h ) treatment
+3,11,n,B-GeneOrGeneProduct,B-ChemicalEntity,wrong_type,##ser ##pin ( n ##sp ) reportedly
+4,9,s,B-ChemicalEntity,O,false_negative,##tin ##ine ( s ##c ##r )
+5,8,h,B-OrganismTaxon,B-DiseaseOrPhenotypicFeature,wrong_type,b virus ( h ##b ##v )
+6,8,p,B-GeneOrGeneProduct,B-ChemicalEntity,wrong_type,the response to p ##eg ##yla ##ted
+7,7,-,I-DiseaseOrPhenotypicFeature,O,false_negative,##lian patients co - infected with hi
+8,6,r,O,B-SequenceVariant,false_positive,substitution ##s ( r ##tl ##18 ##0
+9,6,of,O,I-DiseaseOrPhenotypicFeature,false_positive,function and loss of am ##bula ##tion
+10,6,-,I-GeneOrGeneProduct,I-ChemicalEntity,wrong_type,( p ##eg - if ##n /
+11,6,6,B-SequenceVariant,O,false_negative,integrity . a 6 - base insertion
+12,5,and,I-DiseaseOrPhenotypicFeature,O,false_negative,with hi ##v and he ##pa ##titis
+13,5,he,I-DiseaseOrPhenotypicFeature,B-DiseaseOrPhenotypicFeature,boundary,hi ##v and he ##pa ##titis b
+14,5,p,B-GeneOrGeneProduct,O,false_negative,of treatment whereas p ##k ##ca k
+15,5,meta,O,B-DiseaseOrPhenotypicFeature,false_positive,##gel ##in increases meta ##static potential of
+16,5,leg,O,B-DiseaseOrPhenotypicFeature,false_positive,"##c ##l , leg type ( n"
+17,5,inter,I-GeneOrGeneProduct,I-ChemicalEntity,wrong_type,##eg ##yla ##ted inter ##fer ##on plus
+18,4,with,I-DiseaseOrPhenotypicFeature,O,false_negative,co - infected with hi ##v and
+19,4,auto,O,B-DiseaseOrPhenotypicFeature,false_positive,in patients with auto ##so ##mal dominant
+20,4,of,I-ChemicalEntity,O,false_negative,of tin ##cture of c ##rata ##eg

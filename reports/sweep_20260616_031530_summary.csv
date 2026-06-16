@@ -1,0 +1,4 @@
+experiment,val_f1_mean,val_f1_std,test_f1_mean,test_f1_std,runtime_s_mean,n_seeds
+epochs_16_fixed,0.8569,0.0018,0.8552,0.0013,60.4,3
+epochs_8,0.8737,0.0011,0.8772,0.0027,100.6,3
+combined,0.8702,0.0014,0.8717,0.0035,63.1,3
