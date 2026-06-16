@@ -13,74 +13,79 @@ from training.training_args import build_training_args
 from training.metrics import build_compute_metrics
 from training.data_collator import build_data_collator
 
-config = ConfigService().get()
-set_seed(config.training.seed)
 
-tokenizer = get_tokenizer()
-max_length = config.training.max_length
+def main():
+    config = ConfigService().get()
+    set_seed(config.training.seed)
 
-dataset = load_data()
+    tokenizer = get_tokenizer()
+    max_length = config.model.max_length
 
-train_dataset = dataset["train"]
-validation_dataset = dataset["validation"]
-test_dataset = dataset["test"]
+    dataset = load_data()
 
-LABELS, ID2LABEL = get_semantic_label_pairs(train_dataset)
+    train_dataset = dataset["train"]
+    validation_dataset = dataset["validation"]
+    test_dataset = dataset["test"]
 
-train_processed = train_dataset.map(lambda sample: process_sample(sample, LABELS, tokenizer, max_length))
-validation_processed = validation_dataset.map(lambda sample: process_sample(sample, LABELS, tokenizer, max_length))
-test_processed = test_dataset.map(lambda sample: process_sample(sample, LABELS, tokenizer, max_length))
+    LABELS, ID2LABEL = get_semantic_label_pairs(train_dataset)
 
-report_healthy = inspect_ner_dataset(
-    train_processed,
-    train_dataset,
-    ID2LABEL,
-    tokenizer
-)
+    train_processed = train_dataset.map(lambda sample: process_sample(sample, LABELS, tokenizer, max_length))
+    validation_processed = validation_dataset.map(lambda sample: process_sample(sample, LABELS, tokenizer, max_length))
+    test_processed = test_dataset.map(lambda sample: process_sample(sample, LABELS, tokenizer, max_length))
 
-if not report_healthy:
-    print("Dataset inspection failed. Please check the report for details.")
-    exit(1)
-else:
-    print("Dataset inspection passed. The dataset is healthy and ready for training.")
+    report_healthy = inspect_ner_dataset(
+        train_processed,
+        train_dataset,
+        ID2LABEL,
+        tokenizer
+    )
+
+    if not report_healthy:
+        print("Dataset inspection failed. Please check the report for details.")
+        exit(1)
+    else:
+        print("Dataset inspection passed. The dataset is healthy and ready for training.")
 
 
-model = BertForTokenClassification.from_pretrained(
-    config.model.name,
-    num_labels=len(LABELS),
-    id2label=ID2LABEL,
-    label2id=LABELS
-)
-    
-training_args = build_training_args()
+    model = BertForTokenClassification.from_pretrained(
+        config.model.name,
+        num_labels=len(LABELS),
+        id2label=ID2LABEL,
+        label2id=LABELS
+    )
+        
+    training_args = build_training_args()
 
-compute_metrics = build_compute_metrics(
-    ID2LABEL
-)
+    compute_metrics = build_compute_metrics(
+        ID2LABEL
+    )
 
-data_collator = build_data_collator(tokenizer)
+    data_collator = build_data_collator(tokenizer)
 
-trainer = Trainer(
-    model=model,
-    args=training_args,
-    train_dataset=train_processed,
-    eval_dataset=validation_processed,
-    compute_metrics=compute_metrics,
-    data_collator=data_collator
-)
+    trainer = Trainer(
+        model=model,
+        args=training_args,
+        train_dataset=train_processed,
+        eval_dataset=validation_processed,
+        compute_metrics=compute_metrics,
+        data_collator=data_collator
+    )
 
-trainer.train()
+    trainer.train()
 
-validation_metrics = trainer.evaluate()
+    validation_metrics = trainer.evaluate()
 
-print(validation_metrics)
+    print(validation_metrics)
 
-test_results = trainer.predict(
-    test_processed
-)
+    test_results = trainer.predict(
+        test_processed
+    )
 
-print(test_results.metrics)
+    print(test_results.metrics)
 
-trainer.save_model(
-    "./artifacts/biobert_ner"
-)
+    trainer.save_model(
+        "./artifacts/biobert_ner"
+    )
+
+if __name__ == "__main__":
+    main()

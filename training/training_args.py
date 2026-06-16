@@ -5,7 +5,6 @@ config = ConfigService().get()
 
 def build_training_args(experiment=None):
     experiment = experiment or {}
-
     use_cuda = config.training.use_cuda
 
     return TrainingArguments(
@@ -22,16 +21,7 @@ def build_training_args(experiment=None):
         num_train_epochs=experiment.get("epochs", 3),
         weight_decay=experiment.get("weight_decay", 0.01),
 
-        warmup_ratio=0.1,
-
-        learning_rate=2e-5,
-
-        per_device_train_batch_size=8,
-        per_device_eval_batch_size=8,
-
-        num_train_epochs=3,
-
-        weight_decay=0.01,
+        warmup_steps=experiment.get("warmup_steps", 0),
 
         logging_steps=10,
 
@@ -49,5 +39,5 @@ def build_training_args(experiment=None):
         use_cpu=not use_cuda,
         fp16=use_cuda,
         dataloader_pin_memory=use_cuda,
-        dataloading_num_workers=2
+        dataloader_num_workers=0
     )
