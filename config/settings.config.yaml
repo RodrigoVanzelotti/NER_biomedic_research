@@ -1,0 +1,7 @@
+app:
+  name: "biomedic-ner-for-kgs"
+  version: ${APP_VERSION:1.0.0}
+  environment: ${APP_ENVIRONMENT:production}
+  log_level: ${APP_LOG_LEVEL:INFO}
+paths:
+  data_folder: ${DATA_DATASET_FOLDER:./datasets}
