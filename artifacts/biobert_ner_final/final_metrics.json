@@ -1,0 +1,30 @@
+{
+  "experiment": {
+    "name": "final",
+    "learning_rate": 2e-05,
+    "epochs": 8,
+    "batch_size": 8,
+    "weight_decay": 0.01,
+    "warmup_steps": 40
+  },
+  "seed": 42,
+  "val": {
+    "eval_loss": 0.1228,
+    "eval_precision": 0.8555,
+    "eval_recall": 0.8926,
+    "eval_f1": 0.8737,
+    "eval_runtime": 0.8146,
+    "eval_samples_per_second": 122.754,
+    "eval_steps_per_second": 15.958,
+    "epoch": 8.0
+  },
+  "test": {
+    "test_loss": 0.1131,
+    "test_precision": 0.8616,
+    "test_recall": 0.8936,
+    "test_f1": 0.8773,
+    "test_runtime": 0.8355,
+    "test_samples_per_second": 119.686,
+    "test_steps_per_second": 15.559
+  }
+}

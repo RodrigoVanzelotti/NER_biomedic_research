@@ -1,0 +1,56 @@
+{
+  "CellLine": {
+    "precision": 0.9534883720930233,
+    "recall": 0.8367346938775511,
+    "f1-score": 0.8913043478260869,
+    "support": 49
+  },
+  "ChemicalEntity": {
+    "precision": 0.8602564102564103,
+    "recall": 0.9166666666666666,
+    "f1-score": 0.8875661375661376,
+    "support": 732
+  },
+  "DiseaseOrPhenotypicFeature": {
+    "precision": 0.7947643979057591,
+    "recall": 0.8754325259515571,
+    "f1-score": 0.8331503841931943,
+    "support": 867
+  },
+  "GeneOrGeneProduct": {
+    "precision": 0.9054441260744985,
+    "recall": 0.8851540616246498,
+    "f1-score": 0.895184135977337,
+    "support": 1071
+  },
+  "OrganismTaxon": {
+    "precision": 0.9498680738786279,
+    "recall": 0.96,
+    "f1-score": 0.9549071618037134,
+    "support": 375
+  },
+  "SequenceVariant": {
+    "precision": 0.7838983050847458,
+    "recall": 0.8295964125560538,
+    "f1-score": 0.8061002178649237,
+    "support": 223
+  },
+  "micro avg": {
+    "precision": 0.8616279069767442,
+    "recall": 0.893578534820621,
+    "f1-score": 0.8773124167529969,
+    "support": 3317
+  },
+  "macro avg": {
+    "precision": 0.8746199475488442,
+    "recall": 0.883930726779413,
+    "f1-score": 0.8780353975385656,
+    "support": 3317
+  },
+  "weighted avg": {
+    "precision": 0.8641030643016929,
+    "recall": 0.893578534820621,
+    "f1-score": 0.8779941069428366,
+    "support": 3317
+  }
+}

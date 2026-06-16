@@ -3,12 +3,13 @@ from services.config.config_service import ConfigService
 
 config = ConfigService().get()
 
-def build_training_args(experiment=None):
+def build_training_args(experiment=None, run_id=None):
     experiment = experiment or {}
     use_cuda = config.training.use_cuda
+    output_dir = f"./results/{run_id}" if run_id else "./results"
 
     return TrainingArguments(
-        output_dir="./results",
+        output_dir=output_dir,
 
         eval_strategy="epoch",
         save_strategy="epoch",

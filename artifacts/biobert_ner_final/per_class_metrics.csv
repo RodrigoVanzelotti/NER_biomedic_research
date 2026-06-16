@@ -1,0 +1,10 @@
+entity,precision,recall,f1,support
+micro avg,0.8616,0.8936,0.8773,3317
+macro avg,0.8746,0.8839,0.878,3317
+weighted avg,0.8641,0.8936,0.878,3317
+GeneOrGeneProduct,0.9054,0.8852,0.8952,1071
+DiseaseOrPhenotypicFeature,0.7948,0.8754,0.8332,867
+ChemicalEntity,0.8603,0.9167,0.8876,732
+OrganismTaxon,0.9499,0.96,0.9549,375
+SequenceVariant,0.7839,0.8296,0.8061,223
+CellLine,0.9535,0.8367,0.8913,49

@@ -9,6 +9,6 @@ __pycache__/
 .venv
 datasets/*
 
-artifacts/*
+# artifacts/*
 logs/*
 results/*
