@@ -1,13 +1,13 @@
 from datasets import load_from_disk, load_dataset
-from typing import Union
-from dotenv import dotenv_values
 from pathlib import Path
 
+from services.config.config_service import ConfigService
 
-env_variables = dotenv_values(Path('config') / '.env')
-dataset_folder_path = Path(env_variables['DATA_DATASET_FOLDER']) / 'biored'
+config = ConfigService().get()
 
 def load_data(save_to_disk_on_fetch: bool = True):
+    dataset_folder_path = Path(config.data.data_folder) / 'biored'
+
     if dataset_folder_path.exists():
         print('Retrieving data from disk')
         dataset = load_from_disk(str(dataset_folder_path))

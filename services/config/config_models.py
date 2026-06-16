@@ -40,6 +40,18 @@ class AppConfig(BaseModel):
 class DataConfig(BaseModel):
     data_folder: str = get_development_settings("PATHS_DATASET_FOLDER", "datasets")
 
+class ModelConfig(BaseModel):
+    name: str = get_development_settings("MODEL_NAME", "dmis-lab/biobert-base-cased-v1.1")
+    max_length: int = get_development_settings("MODEL_MAX_LENGTH", 512)
+
+class TrainingConfig(BaseModel):
+    use_cuda: bool = get_development_settings("USE_CUDA", False)
+    seed: int = get_development_settings("TRAINING_SEED", 42)
+
 class TotalConfig(BaseModel):
+    model_config = {"protected_namespaces": ()}
+    
     app: AppConfig = Field(alias="app")
     data: DataConfig = Field(alias="data")
+    model: ModelConfig = Field(alias="model")
+    training: TrainingConfig = Field(alias="training")

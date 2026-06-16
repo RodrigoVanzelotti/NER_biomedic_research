@@ -1,7 +1,9 @@
 from transformers import BertTokenizerFast
+from services.config.config_service import ConfigService
 
+config = ConfigService().get()
 
 def get_tokenizer():
     return BertTokenizerFast.from_pretrained(
-    "dmis-lab/biobert-base-cased-v1.1"
-)
+        config.model.name
+    )

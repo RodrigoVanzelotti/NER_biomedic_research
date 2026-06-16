@@ -1,11 +1,14 @@
 from transformers import (
     BertForTokenClassification,
-    Trainer
+    Trainer,
+    TrainingArguments
 )
 
+from services.config.config_service import ConfigService
 from services.tokenizer import get_tokenizer
 from training.metrics import build_compute_metrics
 
+config = ConfigService().get()
 
 def evaluate_model(
     model_path,
@@ -19,9 +22,16 @@ def evaluate_model(
         model_path
     )
 
+    eval_args = TrainingArguments(
+        output_dir="./results",
+        report_to="none",
+        use_cpu=not config.training.use_cuda
+    )
+
     trainer = Trainer(
         model=model,
-        tokenizer=tokenizer,
+        args=eval_args,
+        processing_class=tokenizer,
         compute_metrics=build_compute_metrics(
             id2label
         )

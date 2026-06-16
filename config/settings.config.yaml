@@ -5,3 +5,9 @@ app:
   log_level: ${APP_LOG_LEVEL:INFO}
 paths:
   data_folder: ${DATA_DATASET_FOLDER:./datasets}
+model:
+  name: ${MODEL_NAME:dmis-lab/biobert-base-cased-v1.1}
+  max_length: ${MODEL_MAX_LENGTH:512}
+training:
+  use_cuda: ${USE_CUDA:false}
+  seed: ${TRAINING_SEED:42}
